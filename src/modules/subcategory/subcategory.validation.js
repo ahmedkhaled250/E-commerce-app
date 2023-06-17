@@ -35,7 +35,6 @@ export const updateSubCategory = {
         "string.empty": "not allowed to be empty",
         "string.base": "only string is allowed",
       }),
-      categoryId: joi.string(),
     }),
   headers: joi
     .object()

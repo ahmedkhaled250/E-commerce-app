@@ -76,7 +76,7 @@ export const updateSubCategory = asyncHandler(async (req, res, next) => {
       const subCategory = await findById({
         model: subCategoryModel,
         createdBy:user._id,
-        condition: {subCategoryId,categoryId},
+        condition: {_id:subCategoryId,categoryId},
       });
       if (!subCategory) {
         return next(new Error("In-valid subCategory or category", { cause: 404 }));
