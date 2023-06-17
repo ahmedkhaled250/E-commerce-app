@@ -25,6 +25,7 @@ export const createSubCategory = {
 export const updateSubCategory = {
   params: joi.object().required().keys({
     subCategoryId: joi.string().required(),
+    categoryId: joi.string().required(),
   }),
   body: joi
     .object()

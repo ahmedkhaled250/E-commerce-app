@@ -65,7 +65,7 @@ export const addSubCategory = asyncHandler(async (req, res, next) => {
   }
 });
 export const updateSubCategory = asyncHandler(async (req, res, next) => {
-  const { subCategoryId } = req.params;
+  const { subCategoryId,categoryId } = req.params;
   const user = await findById({ model: userModel, condition: req.user._id });
   if (!user) {
     return next(new Error("In-valid user", { cause: 404 }));
@@ -73,22 +73,13 @@ export const updateSubCategory = asyncHandler(async (req, res, next) => {
     if (user.deleted) {
       return next(new Error("Your account is stopped", { cause: 400 }));
     } else {
-      let category;
-      if (req.body.categoryId) {
-        category = await findById({
-          model: categoryModel,
-          condition: req.body.categoryId,
-        });
-        if (!category) {
-          return next(new Error("In-valid category", { cause: 404 }));
-        }
-      }
       const subCategory = await findById({
         model: subCategoryModel,
-        condition: subCategoryId,
+        createdBy:user._id,
+        condition: {subCategoryId,categoryId},
       });
       if (!subCategory) {
-        return next(new Error("In-valid subCategory", { cause: 404 }));
+        return next(new Error("In-valid subCategory or category", { cause: 404 }));
       } else {
         if (req.body.name) {
           const subCategoryName = await findOne({
