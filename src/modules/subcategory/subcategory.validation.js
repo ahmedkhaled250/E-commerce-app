@@ -2,7 +2,7 @@ import joi from "joi";
 
 export const createSubCategory = {
   params: joi.object().required().keys({
-    categoryId: joi.string().required(),
+    categoryId: joi.string().min(24).max(24).required(),
   }),
   body: joi
     .object()
@@ -24,8 +24,8 @@ export const createSubCategory = {
 };
 export const updateSubCategory = {
   params: joi.object().required().keys({
-    subCategoryId: joi.string().required(),
-    categoryId: joi.string().required(),
+    subCategoryId: joi.string().min(24).max(24).required(),
+    categoryId: joi.string().min(24).max(24).required(),
   }),
   body: joi
     .object()
@@ -46,6 +46,6 @@ export const updateSubCategory = {
 };
 export const getSubCategoryById = {
   params: joi.object().required().keys({
-    id: joi.string().required(),
+    id: joi.string().min(24).max(24).required(),
   }),
 };

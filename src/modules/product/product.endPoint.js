@@ -1,7 +1,7 @@
 import { roles } from "../../middleware/auth.js";
 
 export const endPoint = {
-    createProduct :[roles.Accouting,roles.Admin],
-    updateProduct :[roles.Accouting,roles.Admin],
-    softDeleteProduct :[roles.Admin,roles.Accouting]
+    createProduct :[roles.Accounting,roles.Admin],
+    updateProduct :[roles.Accounting,roles.Admin],
+    softDeleteProduct :[roles.Admin,roles.Accounting]
 }

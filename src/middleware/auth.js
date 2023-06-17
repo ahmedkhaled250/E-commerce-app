@@ -5,7 +5,7 @@ import { findById } from "../../DB/DBMethods.js";
 export const roles = {
   User:'User',
   Admin:'Admin',
-  Accouting:'Accouting',
+  Accounting:'Accounting',
 }
 export const auth = (accessRoles) => {
   return asyncHandler(async (req, res, next) => {
